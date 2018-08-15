@@ -40,8 +40,8 @@ static char sccsid[] = "@(#)hash_func.c	8.2 (Berkeley) 2/21/94";
 #include <sys/cdefs.h>
 #include <sys/types.h>
 
-#include "db_local.h"
 #include "hash.h"
+#include "db_local.h"
 #include "page.h"
 #include "extern.h"
 
