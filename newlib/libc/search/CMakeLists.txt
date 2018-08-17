@@ -1,35 +1,23 @@
-
-add_library(search STATIC "")
-
-target_include_directories(search
-    PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}
-    PUBLIC
-        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/newlib/libc/include>
-        $<INSTALL_INTERFACE:include>
-)
-
-target_sources(search
-    PRIVATE
-        bsd_qsort_r.c
-        bsearch.c
-        extern.h
-        hash_bigkey.c
-        hash_buf.c
-        hash.c
-        hash_func.c
-        hash.h
-        db_local.h
-        hash_log2.c
-        hash_page.c
-        hcreate.c
-        hcreate_r.c
-        page.h
-        qsort.c
-        qsort_r.c
-        tdelete.c
-        tdestroy.c
-        tfind.c
-        tsearch.c
-        twalk.c
+target_sources(c PRIVATE
+    ${CMAKE_CURRENT_LIST_DIR}/bsd_qsort_r.c
+    ${CMAKE_CURRENT_LIST_DIR}/bsearch.c
+    ${CMAKE_CURRENT_LIST_DIR}/extern.h
+    ${CMAKE_CURRENT_LIST_DIR}/hash_bigkey.c
+    ${CMAKE_CURRENT_LIST_DIR}/hash_buf.c
+    ${CMAKE_CURRENT_LIST_DIR}/hash.c
+    ${CMAKE_CURRENT_LIST_DIR}/hash_func.c
+    ${CMAKE_CURRENT_LIST_DIR}/hash.h
+    ${CMAKE_CURRENT_LIST_DIR}/db_local.h
+    ${CMAKE_CURRENT_LIST_DIR}/hash_log2.c
+    ${CMAKE_CURRENT_LIST_DIR}/hash_page.c
+    ${CMAKE_CURRENT_LIST_DIR}/hcreate.c
+    ${CMAKE_CURRENT_LIST_DIR}/hcreate_r.c
+    ${CMAKE_CURRENT_LIST_DIR}/page.h
+    ${CMAKE_CURRENT_LIST_DIR}/qsort.c
+    ${CMAKE_CURRENT_LIST_DIR}/qsort_r.c
+    ${CMAKE_CURRENT_LIST_DIR}/tdelete.c
+    ${CMAKE_CURRENT_LIST_DIR}/tdestroy.c
+    ${CMAKE_CURRENT_LIST_DIR}/tfind.c
+    ${CMAKE_CURRENT_LIST_DIR}/tsearch.c
+    ${CMAKE_CURRENT_LIST_DIR}/twalk.c
 )
