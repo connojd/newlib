@@ -1,0 +1,3 @@
+@PACKAGE_INIT@
+list(APPEND CMAKE_MODULE_PATH "@PACKAGE_EXPORT_DIR@")
+include("${CMAKE_CURRENT_LIST_DIR}/newlib-targets.cmake")

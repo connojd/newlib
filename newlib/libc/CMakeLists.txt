@@ -1,10 +1,9 @@
-# Copyright (C) 2018 by Connor Davis
+# Copyright (C) 2018 Connor Davis
 #
 # Permission to use, copy, modify, and distribute this software
 # is freely granted, provided that this notice is preserved.
 #
 
-enable_language(ASM)
 add_library(c STATIC "")
 set_target_properties(c PROPERTIES LINKER_LANGUAGE C)
 
@@ -15,9 +14,31 @@ target_compile_features(c
 
 target_include_directories(c
     PUBLIC
-        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/newlib/libc/include>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
         $<INSTALL_INTERFACE:include>
 )
+
+#set(try_stub "${CMAKE_CURRENT_BINARY_DIR}/try_stub.c")
+#file(WRITE ${try_stub} "int main(){}")
+#
+#try_compile(
+#    HAVE_SSE
+#    ${CMAKE_CURRENT_BINARY_DIR}
+#    ${try_stub}
+#    CMAKE_FLAGS -DCMAKE_C_FLAGS=-msse
+#)
+#try_compile(
+#    HAVE_SSE2
+#    ${CMAKE_CURRENT_BINARY_DIR}
+#    ${try_stub}
+#    CMAKE_FLAGS -DCMAKE_C_FLAGS=-msse2
+#)
+#try_compile(
+#    HAVE_SSE3
+#    ${CMAKE_CURRENT_BINARY_DIR}
+#    ${try_stub}
+#    CMAKE_FLAGS -DCMAKE_C_FLAGS=-msse3
+#)
 
 target_compile_options(c
     PRIVATE
@@ -63,14 +84,16 @@ add_subdirectory(stdio)
 add_subdirectory(stdlib)
 
 #
-# unused
+# Add c target to newlib export set
 #
+install(
+    TARGETS c
+    EXPORT newlib::lib
+    ARCHIVE DESTINATION lib
+    INCLUDES DESTINATION include
+)
 
-# iconv
-# stdio64
-# posix
-# sys
-# reent
-# syscalls
-# unix
-# xdr
+install(
+    DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/include/
+    DESTINATION include
+)
