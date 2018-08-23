@@ -37,14 +37,3 @@ install(
 )
 
 add_subdirectory(newlib)
-
-
-
-
-
-
-
-
-
-
-

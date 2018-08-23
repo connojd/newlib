@@ -81,14 +81,6 @@ target_sources(c PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/local.h
     ${CMAKE_CURRENT_LIST_DIR}/makebuf.c
     ${CMAKE_CURRENT_LIST_DIR}/mktemp.c
-    ${CMAKE_CURRENT_LIST_DIR}/nano-vfprintf.c
-    ${CMAKE_CURRENT_LIST_DIR}/nano-vfprintf_float.c
-    ${CMAKE_CURRENT_LIST_DIR}/nano-vfprintf_i.c
-    ${CMAKE_CURRENT_LIST_DIR}/nano-vfprintf_local.h
-    ${CMAKE_CURRENT_LIST_DIR}/nano-vfscanf.c
-    ${CMAKE_CURRENT_LIST_DIR}/nano-vfscanf_float.c
-    ${CMAKE_CURRENT_LIST_DIR}/nano-vfscanf_i.c
-    ${CMAKE_CURRENT_LIST_DIR}/nano-vfscanf_local.h
     ${CMAKE_CURRENT_LIST_DIR}/open_memstream.c
     ${CMAKE_CURRENT_LIST_DIR}/perror.c
     ${CMAKE_CURRENT_LIST_DIR}/printf.c
