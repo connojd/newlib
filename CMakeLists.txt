@@ -36,4 +36,5 @@ install(
     FILE newlib-targets.cmake
 )
 
-add_subdirectory(newlib)
+add_subdirectory(newlib/libc)
+add_subdirectory(newlib/libm)
