@@ -52,20 +52,20 @@ add_subdirectory(common)
 add_subdirectory(complex)
 add_subdirectory(machine/i386)
 add_subdirectory(math)
-#add_subdirectory(mathfp)
-#test
 
 #
 # Add m target to newlib export set
 #
-#install(
-#    TARGETS m
-#    EXPORT newlib::lib
-#    ARCHIVE DESTINATION lib
-#    INCLUDES DESTINATION include
-#)
-#
-#install(
-#    DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/include/
-#    DESTINATION include
-#)
+install(
+    TARGETS m
+    EXPORT newlib::lib
+    ARCHIVE DESTINATION lib
+    INCLUDES DESTINATION include
+)
+
+install(
+    DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/../libc/include/
+    DESTINATION include
+)
+
+# TODO make sure sources aren't installed. Install .h files in src dirs as necessary (fdlibm)

@@ -144,3 +144,8 @@ target_sources(m PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/tgammal.c
     ${CMAKE_CURRENT_LIST_DIR}/truncl.c
 )
+
+install(FILES
+    ${CMAKE_CURRENT_LIST_DIR}/fdlibm.h
+    DESTINATION include
+)
