@@ -7,10 +7,10 @@
 
 add_library(c)
 
-target_compile_features(c PRIVATE c_std_11)
-target_compile_definitions(c PRIVATE MALLOC_PROVIDED _COMPILING_NEWLIB)
-target_compile_definitions(c PRIVATE __NO_SYSCALLS__ MISSING_SYSCALL_NAMES)
-target_include_directories(c SYSTEM PRIVATE
+target_compile_features(c PUBLIC c_std_11)
+target_compile_definitions(c PUBLIC MALLOC_PROVIDED _COMPILING_NEWLIB)
+target_compile_definitions(c PUBLIC __NO_SYSCALLS__ MISSING_SYSCALL_NAMES)
+target_include_directories(c SYSTEM PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )

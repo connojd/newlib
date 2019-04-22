@@ -133,10 +133,6 @@ target_sources(c PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/vdiprintf.c
     ${CMAKE_CURRENT_LIST_DIR}/vdprintf.c
     ${CMAKE_CURRENT_LIST_DIR}/vfieeefp.h
-    ${CMAKE_CURRENT_LIST_DIR}/vfprintf.c
-    ${CMAKE_CURRENT_LIST_DIR}/vfscanf.c
-    ${CMAKE_CURRENT_LIST_DIR}/vfwprintf.c
-    ${CMAKE_CURRENT_LIST_DIR}/vfwscanf.c
     ${CMAKE_CURRENT_LIST_DIR}/viprintf.c
     ${CMAKE_CURRENT_LIST_DIR}/viscanf.c
     ${CMAKE_CURRENT_LIST_DIR}/vprintf.c
@@ -156,3 +152,63 @@ target_sources(c PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/wscanf.c
     ${CMAKE_CURRENT_LIST_DIR}/wsetup.c
 )
+
+add_library(io INTERFACE)
+target_compile_features(io INTERFACE c_std_11)
+target_compile_definitions(io INTERFACE MALLOC_PROVIDED _COMPILING_NEWLIB)
+target_compile_definitions(io INTERFACE __NO_SYSCALLS__ MISSING_SYSCALL_NAMES)
+target_include_directories(io SYSTEM INTERFACE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/../include>
+    $<INSTALL_INTERFACE:include>
+)
+
+macro(add_io_lib NAME SRC)
+    add_library(${NAME} OBJECT)
+    target_sources(${NAME} PRIVATE ${CMAKE_CURRENT_LIST_DIR}/${SRC}.c)
+    target_link_libraries(${NAME} PRIVATE io)
+    target_link_libraries(c PRIVATE ${NAME})
+endmacro(add_io_lib)
+
+# printf
+#
+add_io_lib(vfprintf vfprintf)
+add_io_lib(vfiprintf vfprintf)
+add_io_lib(svfprintf vfprintf)
+add_io_lib(svfiprintf vfprintf)
+
+target_compile_definitions(vfiprintf PRIVATE INTEGER_ONLY)
+target_compile_definitions(svfprintf PRIVATE STRING_ONLY)
+target_compile_definitions(svfiprintf PRIVATE INTEGER_ONLY STRING_ONLY)
+
+# wprintf
+#
+add_io_lib(vfwprintf vfwprintf)
+add_io_lib(vfiwprintf vfwprintf)
+add_io_lib(svfwprintf vfwprintf)
+add_io_lib(svfiwprintf vfwprintf)
+
+target_compile_definitions(vfiwprintf PRIVATE INTEGER_ONLY)
+target_compile_definitions(svfwprintf PRIVATE STRING_ONLY)
+target_compile_definitions(svfiwprintf PRIVATE INTEGER_ONLY STRING_ONLY)
+
+# scanf
+#
+add_io_lib(vfscanf vfscanf)
+add_io_lib(vfiscanf vfscanf)
+add_io_lib(svfscanf vfscanf)
+add_io_lib(svfiscanf vfscanf)
+
+target_compile_definitions(vfiscanf PRIVATE INTEGER_ONLY)
+target_compile_definitions(svfscanf PRIVATE STRING_ONLY)
+target_compile_definitions(svfiscanf PRIVATE INTEGER_ONLY STRING_ONLY)
+
+# wscanf
+#
+add_io_lib(vfwscanf vfwscanf)
+add_io_lib(vfiwscanf vfwscanf)
+add_io_lib(svfwscanf vfwscanf)
+add_io_lib(svfiwscanf vfwscanf)
+
+target_compile_definitions(vfiwscanf PRIVATE INTEGER_ONLY)
+target_compile_definitions(svfwscanf PRIVATE STRING_ONLY)
+target_compile_definitions(svfiwscanf PRIVATE INTEGER_ONLY STRING_ONLY)
