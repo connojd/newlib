@@ -1,25 +1,33 @@
+#
+# Copyright (C) 2019 Assured Information Security
+#
+# Permission to use, copy, modify, and distribute this software
+# is freely granted, provided that this notice is preserved.
+#
+
 target_sources(c PRIVATE
-    ${CMAKE_CURRENT_LIST_DIR}/asctime.c
-    ${CMAKE_CURRENT_LIST_DIR}/asctime_r.c
-    ${CMAKE_CURRENT_LIST_DIR}/clock.c
-    ${CMAKE_CURRENT_LIST_DIR}/ctime.c
-    ${CMAKE_CURRENT_LIST_DIR}/ctime_r.c
-    ${CMAKE_CURRENT_LIST_DIR}/difftime.c
-    ${CMAKE_CURRENT_LIST_DIR}/gettzinfo.c
-    ${CMAKE_CURRENT_LIST_DIR}/gmtime.c
-    ${CMAKE_CURRENT_LIST_DIR}/gmtime_r.c
-    ${CMAKE_CURRENT_LIST_DIR}/lcltime.c
-    ${CMAKE_CURRENT_LIST_DIR}/lcltime_r.c
-    ${CMAKE_CURRENT_LIST_DIR}/local.h
-    ${CMAKE_CURRENT_LIST_DIR}/mktime.c
-    ${CMAKE_CURRENT_LIST_DIR}/month_lengths.c
-    ${CMAKE_CURRENT_LIST_DIR}/strftime.c
-    ${CMAKE_CURRENT_LIST_DIR}/strptime.c
-    ${CMAKE_CURRENT_LIST_DIR}/time.c
-    ${CMAKE_CURRENT_LIST_DIR}/tzcalc_limits.c
-    ${CMAKE_CURRENT_LIST_DIR}/tzlock.c
-    ${CMAKE_CURRENT_LIST_DIR}/tzset.c
-    ${CMAKE_CURRENT_LIST_DIR}/tzset_r.c
-    ${CMAKE_CURRENT_LIST_DIR}/tzvars.c
-    ${CMAKE_CURRENT_LIST_DIR}/wcsftime.c
+    asctime.c
+    asctime_r.c
+    clock.c
+    ctime.c
+    ctime_r.c
+    difftime.c
+    gettzinfo.c
+    gmtime.c
+    gmtime_r.c
+    lcltime.c
+    lcltime_r.c
+    local.h
+    mktime.c
+    month_lengths.c
+    strftime.c
+    strptime.c
+    time.c
+    time.tex
+    tzcalc_limits.c
+    tzlock.c
+    tzset.c
+    tzset_r.c
+    tzvars.c
+    wcsftime.c
 )

@@ -1,3 +1,10 @@
+#
+# Copyright (C) 2019 Assured Information Security
+#
+# Permission to use, copy, modify, and distribute this software
+# is freely granted, provided that this notice is preserved.
+#
+
 target_sources(m PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/acoshl.c
     ${CMAKE_CURRENT_LIST_DIR}/acosl.c
@@ -145,7 +152,4 @@ target_sources(m PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/truncl.c
 )
 
-install(FILES
-    ${CMAKE_CURRENT_LIST_DIR}/fdlibm.h
-    DESTINATION include
-)
+install(FILES ${CMAKE_CURRENT_LIST_DIR}/fdlibm.h DESTINATION include)

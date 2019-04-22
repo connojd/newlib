@@ -8,6 +8,7 @@
 cmake_minimum_required(VERSION 3.13)
 project(newlib VERSION 3.0.0)
 
+enable_language(ASM)
 set(BUILD_SHARED_LIBS OFF)
 
 # Bareflank-specific defines. These are referenced by the configure_file
@@ -30,10 +31,15 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${TARG_INC}/sys)
 execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${TARG_INC}/bits)
 execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${TARG_INC}/machine)
 
-configure_file(${SRC}/cmake/_newlib_version.h.in ${TARG_INC}/_newlib_version.h)
-configure_file(${SRC}/cmake/newlib.h.in ${TARG_INC}/newlib.h @ONLY UNIX)
+configure_file(
+    ${SRC}/cmake/_newlib_version.h.in
+    ${SRC}/newlib/libc/include/_newlib_version.h
+)
 
-install(FILES ${TARG_INC}/_newlib_version.h DESTINATION include)
-install(FILES ${TARG_INC}/newlib.h DESTINATION include)
+configure_file(
+    ${SRC}/cmake/newlib.h.in
+    ${SRC}/newlib/libc/include/newlib.h
+)
 
-#add_subdirectory(newlib/libc)
+add_subdirectory(newlib/libc)
+add_subdirectory(newlib/libm)
