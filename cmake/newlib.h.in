@@ -1,0 +1,207 @@
+/**
+ * Copyright (C) 2019 Assured Information Security
+ *
+ * Permission to use, copy, modify, and distribute this software
+ * is freely granted, provided that this notice is preserved.
+ */
+
+#ifndef __NEWLIB_H__
+#define __NEWLIB_H__ 1
+
+/* EL/IX level */
+#cmakedefine _ELIX_LEVEL @_ELIX_LEVEL@
+
+/* Newlib version */
+#include <_newlib_version.h>
+
+/* C99 formats support (such as %a, %zu, ...) in IO functions like
+ * printf/scanf enabled */
+#cmakedefine _WANT_IO_C99_FORMATS @_WANT_IO_C99_FORMATS@
+
+/* long long type support in IO functions like printf/scanf enabled */
+#cmakedefine _WANT_IO_LONG_LONG @_WANT_IO_LONG_LONG@
+
+/* Register application finalization function using atexit. */
+#cmakedefine _WANT_REGISTER_FINI @_WANT_REGISTER_FINI@
+
+/* long double type support in IO functions like printf/scanf enabled */
+#cmakedefine _WANT_IO_LONG_DOUBLE @_WANT_IO_LONG_DOUBLE@
+
+/* Positional argument support in printf functions enabled.  */
+#cmakedefine _WANT_IO_POS_ARGS @_WANT_IO_POS_ARGS@
+
+/* Optional reentrant struct support.  Used mostly on platforms with
+   very restricted storage.  */
+#cmakedefine _WANT_REENT_SMALL @_WANT_REENT_SMALL@
+
+/* Multibyte supported */
+#cmakedefine _MB_CAPABLE @_MB_CAPABLE@
+
+/* MB_LEN_MAX */
+#cmakedefine _MB_LEN_MAX @_MB_LEN_MAX@
+
+/* ICONV enabled */
+#cmakedefine _ICONV_ENABLED @_ICONV_ENABLED@
+
+/* Enable ICONV external CCS files loading capabilities */
+#cmakedefine _ICONV_ENABLE_EXTERNAL_CCS @_ICONV_ENABLE_EXTERNAL_CCS@
+
+/* Define if the linker supports .preinit_array/.init_array/.fini_array
+ * sections.  */
+#cmakedefine  HAVE_INITFINI_ARRAY @HAVE_INITFINI_ARRAY@
+
+/* True if atexit() may dynamically allocate space for cleanup
+   functions.  */
+#cmakedefine  _ATEXIT_DYNAMIC_ALLOC @_ATEXIT_DYNAMIC_ALLOC@
+
+/* True if long double supported.  */
+#cmakedefine  _HAVE_LONG_DOUBLE @_HAVE_LONG_DOUBLE@
+
+/* Define if compiler supports -fno-tree-loop-distribute-patterns. */
+#cmakedefine  _HAVE_CC_INHIBIT_LOOP_TO_LIBCALL @_HAVE_CC_INHIBIT_LOOP_TO_LIBCALL@
+
+/* True if long double supported and it is equal to double.  */
+#cmakedefine  _LDBL_EQ_DBL @_LDBL_EQ_DBL@
+
+/* Define if ivo supported in streamio.  */
+#cmakedefine _FVWRITE_IN_STREAMIO @_FVWRITE_IN_STREAMIO@
+
+/* Define if fseek functions support seek optimization.  */
+#cmakedefine _FSEEK_OPTIMIZATION @_FSEEK_OPTIMIZATION@
+
+/* Define if wide char orientation is supported.  */
+#cmakedefine  _WIDE_ORIENT @_WIDE_ORIENT@
+
+/* Define if unbuffered stream file optimization is supported.  */
+#cmakedefine _UNBUF_STREAM_OPT @_UNBUF_STREAM_OPT@
+
+/* Define if lite version of exit supported.  */
+#cmakedefine _LITE_EXIT @_LITE_EXIT@
+
+/* Define if declare atexit data as global.  */
+#cmakedefine _REENT_GLOBAL_ATEXIT @_REENT_GLOBAL_ATEXIT@
+
+/* Define to move the stdio stream FILE objects out of struct _reent and make
+   them global.  The stdio stream pointers of struct _reent are initialized to
+   point to the global stdio FILE stream objects. */
+#cmakedefine _WANT_REENT_GLOBAL_STDIO_STREAMS @_WANT_REENT_GLOBAL_STDIO_STREAMS@
+
+/* Define if small footprint nano-formatted-IO implementation used.  */
+#cmakedefine _NANO_FORMATTED_IO @_NANO_FORMATTED_IO@
+
+/* Define if using retargetable functions for default lock routines.  */
+#cmakedefine _RETARGETABLE_LOCKING @_RETARGETABLE_LOCKING@
+
+/* Define to use type long for time_t.  */
+#cmakedefine _WANT_USE_LONG_TIME_T @_WANT_USE_LONG_TIME_T@
+
+/*
+ * Iconv encodings enabled ("to" direction)
+ */
+#cmakedefine _ICONV_TO_ENCODING_BIG5 @_ICONV_TO_ENCODING_BIG5@
+#cmakedefine _ICONV_TO_ENCODING_CP775 @_ICONV_TO_ENCODING_CP775@
+#cmakedefine _ICONV_TO_ENCODING_CP850 @_ICONV_TO_ENCODING_CP850@
+#cmakedefine _ICONV_TO_ENCODING_CP852 @_ICONV_TO_ENCODING_CP852@
+#cmakedefine _ICONV_TO_ENCODING_CP855 @_ICONV_TO_ENCODING_CP855@
+#cmakedefine _ICONV_TO_ENCODING_CP866 @_ICONV_TO_ENCODING_CP866@
+#cmakedefine _ICONV_TO_ENCODING_EUC_JP @_ICONV_TO_ENCODING_EUC_JP@
+#cmakedefine _ICONV_TO_ENCODING_EUC_TW @_ICONV_TO_ENCODING_EUC_TW@
+#cmakedefine _ICONV_TO_ENCODING_EUC_KR @_ICONV_TO_ENCODING_EUC_KR@
+#cmakedefine _ICONV_TO_ENCODING_ISO_8859_1 @_ICONV_TO_ENCODING_ISO_8859_1@
+#cmakedefine _ICONV_TO_ENCODING_ISO_8859_10 @_ICONV_TO_ENCODING_ISO_8859_10@
+#cmakedefine _ICONV_TO_ENCODING_ISO_8859_11 @_ICONV_TO_ENCODING_ISO_8859_11@
+#cmakedefine _ICONV_TO_ENCODING_ISO_8859_13 @_ICONV_TO_ENCODING_ISO_8859_13@
+#cmakedefine _ICONV_TO_ENCODING_ISO_8859_14 @_ICONV_TO_ENCODING_ISO_8859_14@
+#cmakedefine _ICONV_TO_ENCODING_ISO_8859_15 @_ICONV_TO_ENCODING_ISO_8859_15@
+#cmakedefine _ICONV_TO_ENCODING_ISO_8859_2 @_ICONV_TO_ENCODING_ISO_8859_2@
+#cmakedefine _ICONV_TO_ENCODING_ISO_8859_3 @_ICONV_TO_ENCODING_ISO_8859_3@
+#cmakedefine _ICONV_TO_ENCODING_ISO_8859_4 @_ICONV_TO_ENCODING_ISO_8859_4@
+#cmakedefine _ICONV_TO_ENCODING_ISO_8859_5 @_ICONV_TO_ENCODING_ISO_8859_5@
+#cmakedefine _ICONV_TO_ENCODING_ISO_8859_6 @_ICONV_TO_ENCODING_ISO_8859_6@
+#cmakedefine _ICONV_TO_ENCODING_ISO_8859_7 @_ICONV_TO_ENCODING_ISO_8859_7@
+#cmakedefine _ICONV_TO_ENCODING_ISO_8859_8 @_ICONV_TO_ENCODING_ISO_8859_8@
+#cmakedefine _ICONV_TO_ENCODING_ISO_8859_9 @_ICONV_TO_ENCODING_ISO_8859_9@
+#cmakedefine _ICONV_TO_ENCODING_ISO_IR_111 @_ICONV_TO_ENCODING_ISO_IR_111@
+#cmakedefine _ICONV_TO_ENCODING_KOI8_R @_ICONV_TO_ENCODING_KOI8_R@
+#cmakedefine _ICONV_TO_ENCODING_KOI8_RU @_ICONV_TO_ENCODING_KOI8_RU@
+#cmakedefine _ICONV_TO_ENCODING_KOI8_U @_ICONV_TO_ENCODING_KOI8_U@
+#cmakedefine _ICONV_TO_ENCODING_KOI8_UNI @_ICONV_TO_ENCODING_KOI8_UNI@
+#cmakedefine _ICONV_TO_ENCODING_UCS_2 @_ICONV_TO_ENCODING_UCS_2@
+#cmakedefine _ICONV_TO_ENCODING_UCS_2_INTERNAL @_ICONV_TO_ENCODING_UCS_2_INTERNAL@
+#cmakedefine _ICONV_TO_ENCODING_UCS_2BE @_ICONV_TO_ENCODING_UCS_2BE@
+#cmakedefine _ICONV_TO_ENCODING_UCS_2LE @_ICONV_TO_ENCODING_UCS_2LE@
+#cmakedefine _ICONV_TO_ENCODING_UCS_4 @_ICONV_TO_ENCODING_UCS_4@
+#cmakedefine _ICONV_TO_ENCODING_UCS_4_INTERNAL @_ICONV_TO_ENCODING_UCS_4_INTERNAL@
+#cmakedefine _ICONV_TO_ENCODING_UCS_4BE @_ICONV_TO_ENCODING_UCS_4BE@
+#cmakedefine _ICONV_TO_ENCODING_UCS_4LE @_ICONV_TO_ENCODING_UCS_4LE@
+#cmakedefine _ICONV_TO_ENCODING_US_ASCII @_ICONV_TO_ENCODING_US_ASCII@
+#cmakedefine _ICONV_TO_ENCODING_UTF_16 @_ICONV_TO_ENCODING_UTF_16@
+#cmakedefine _ICONV_TO_ENCODING_UTF_16BE @_ICONV_TO_ENCODING_UTF_16BE@
+#cmakedefine _ICONV_TO_ENCODING_UTF_16LE @_ICONV_TO_ENCODING_UTF_16LE@
+#cmakedefine _ICONV_TO_ENCODING_UTF_8 @_ICONV_TO_ENCODING_UTF_8@
+#cmakedefine _ICONV_TO_ENCODING_WIN_1250 @_ICONV_TO_ENCODING_WIN_1250@
+#cmakedefine _ICONV_TO_ENCODING_WIN_1251 @_ICONV_TO_ENCODING_WIN_1251@
+#cmakedefine _ICONV_TO_ENCODING_WIN_1252 @_ICONV_TO_ENCODING_WIN_1252@
+#cmakedefine _ICONV_TO_ENCODING_WIN_1253 @_ICONV_TO_ENCODING_WIN_1253@
+#cmakedefine _ICONV_TO_ENCODING_WIN_1254 @_ICONV_TO_ENCODING_WIN_1254@
+#cmakedefine _ICONV_TO_ENCODING_WIN_1255 @_ICONV_TO_ENCODING_WIN_1255@
+#cmakedefine _ICONV_TO_ENCODING_WIN_1256 @_ICONV_TO_ENCODING_WIN_1256@
+#cmakedefine _ICONV_TO_ENCODING_WIN_1257 @_ICONV_TO_ENCODING_WIN_1257@
+#cmakedefine _ICONV_TO_ENCODING_WIN_1258 @_ICONV_TO_ENCODING_WIN_1258@
+
+/*
+ * Iconv encodings enabled ("from" direction)
+ */
+#cmakedefine _ICONV_FROM_ENCODING_BIG5 @_ICONV_FROM_ENCODING_BIG5@
+#cmakedefine _ICONV_FROM_ENCODING_CP775 @_ICONV_FROM_ENCODING_CP775@
+#cmakedefine _ICONV_FROM_ENCODING_CP850 @_ICONV_FROM_ENCODING_CP850@
+#cmakedefine _ICONV_FROM_ENCODING_CP852 @_ICONV_FROM_ENCODING_CP852@
+#cmakedefine _ICONV_FROM_ENCODING_CP855 @_ICONV_FROM_ENCODING_CP855@
+#cmakedefine _ICONV_FROM_ENCODING_CP866 @_ICONV_FROM_ENCODING_CP866@
+#cmakedefine _ICONV_FROM_ENCODING_EUC_JP @_ICONV_FROM_ENCODING_EUC_JP@
+#cmakedefine _ICONV_FROM_ENCODING_EUC_TW @_ICONV_FROM_ENCODING_EUC_TW@
+#cmakedefine _ICONV_FROM_ENCODING_EUC_KR @_ICONV_FROM_ENCODING_EUC_KR@
+#cmakedefine _ICONV_FROM_ENCODING_ISO_8859_1 @_ICONV_FROM_ENCODING_ISO_8859_1@
+#cmakedefine _ICONV_FROM_ENCODING_ISO_8859_10 @_ICONV_FROM_ENCODING_ISO_8859_10@
+#cmakedefine _ICONV_FROM_ENCODING_ISO_8859_11 @_ICONV_FROM_ENCODING_ISO_8859_11@
+#cmakedefine _ICONV_FROM_ENCODING_ISO_8859_13 @_ICONV_FROM_ENCODING_ISO_8859_13@
+#cmakedefine _ICONV_FROM_ENCODING_ISO_8859_14 @_ICONV_FROM_ENCODING_ISO_8859_14@
+#cmakedefine _ICONV_FROM_ENCODING_ISO_8859_15 @_ICONV_FROM_ENCODING_ISO_8859_15@
+#cmakedefine _ICONV_FROM_ENCODING_ISO_8859_2 @_ICONV_FROM_ENCODING_ISO_8859_2@
+#cmakedefine _ICONV_FROM_ENCODING_ISO_8859_3 @_ICONV_FROM_ENCODING_ISO_8859_3@
+#cmakedefine _ICONV_FROM_ENCODING_ISO_8859_4 @_ICONV_FROM_ENCODING_ISO_8859_4@
+#cmakedefine _ICONV_FROM_ENCODING_ISO_8859_5 @_ICONV_FROM_ENCODING_ISO_8859_5@
+#cmakedefine _ICONV_FROM_ENCODING_ISO_8859_6 @_ICONV_FROM_ENCODING_ISO_8859_6@
+#cmakedefine _ICONV_FROM_ENCODING_ISO_8859_7 @_ICONV_FROM_ENCODING_ISO_8859_7@
+#cmakedefine _ICONV_FROM_ENCODING_ISO_8859_8 @_ICONV_FROM_ENCODING_ISO_8859_8@
+#cmakedefine _ICONV_FROM_ENCODING_ISO_8859_9 @_ICONV_FROM_ENCODING_ISO_8859_9@
+#cmakedefine _ICONV_FROM_ENCODING_ISO_IR_111 @_ICONV_FROM_ENCODING_ISO_IR_111@
+#cmakedefine _ICONV_FROM_ENCODING_KOI8_R @_ICONV_FROM_ENCODING_KOI8_R@
+#cmakedefine _ICONV_FROM_ENCODING_KOI8_RU @_ICONV_FROM_ENCODING_KOI8_RU@
+#cmakedefine _ICONV_FROM_ENCODING_KOI8_U @_ICONV_FROM_ENCODING_KOI8_U@
+#cmakedefine _ICONV_FROM_ENCODING_KOI8_UNI @_ICONV_FROM_ENCODING_KOI8_UNI@
+#cmakedefine _ICONV_FROM_ENCODING_UCS_2 @_ICONV_FROM_ENCODING_UCS_2@
+#cmakedefine _ICONV_FROM_ENCODING_UCS_2_INTERNAL @_ICONV_FROM_ENCODING_UCS_2_INTERNAL@
+#cmakedefine _ICONV_FROM_ENCODING_UCS_2BE @_ICONV_FROM_ENCODING_UCS_2BE@
+#cmakedefine _ICONV_FROM_ENCODING_UCS_2LE @_ICONV_FROM_ENCODING_UCS_2LE@
+#cmakedefine _ICONV_FROM_ENCODING_UCS_4 @_ICONV_FROM_ENCODING_UCS_4@
+#cmakedefine _ICONV_FROM_ENCODING_UCS_4_INTERNAL @_ICONV_FROM_ENCODING_UCS_4_INTERNAL@
+#cmakedefine _ICONV_FROM_ENCODING_UCS_4BE @_ICONV_FROM_ENCODING_UCS_4BE@
+#cmakedefine _ICONV_FROM_ENCODING_UCS_4LE @_ICONV_FROM_ENCODING_UCS_4LE@
+#cmakedefine _ICONV_FROM_ENCODING_US_ASCII @_ICONV_FROM_ENCODING_US_ASCII@
+#cmakedefine _ICONV_FROM_ENCODING_UTF_16 @_ICONV_FROM_ENCODING_UTF_16@
+#cmakedefine _ICONV_FROM_ENCODING_UTF_16BE @_ICONV_FROM_ENCODING_UTF_16BE@
+#cmakedefine _ICONV_FROM_ENCODING_UTF_16LE @_ICONV_FROM_ENCODING_UTF_16LE@
+#cmakedefine _ICONV_FROM_ENCODING_UTF_8 @_ICONV_FROM_ENCODING_UTF_8@
+#cmakedefine _ICONV_FROM_ENCODING_WIN_1250 @_ICONV_FROM_ENCODING_WIN_1250@
+#cmakedefine _ICONV_FROM_ENCODING_WIN_1251 @_ICONV_FROM_ENCODING_WIN_1251@
+#cmakedefine _ICONV_FROM_ENCODING_WIN_1252 @_ICONV_FROM_ENCODING_WIN_1252@
+#cmakedefine _ICONV_FROM_ENCODING_WIN_1253 @_ICONV_FROM_ENCODING_WIN_1253@
+#cmakedefine _ICONV_FROM_ENCODING_WIN_1254 @_ICONV_FROM_ENCODING_WIN_1254@
+#cmakedefine _ICONV_FROM_ENCODING_WIN_1255 @_ICONV_FROM_ENCODING_WIN_1255@
+#cmakedefine _ICONV_FROM_ENCODING_WIN_1256 @_ICONV_FROM_ENCODING_WIN_1256@
+#cmakedefine _ICONV_FROM_ENCODING_WIN_1257 @_ICONV_FROM_ENCODING_WIN_1257@
+#cmakedefine _ICONV_FROM_ENCODING_WIN_1258 @_ICONV_FROM_ENCODING_WIN_1258@
+
+#endif /* !__NEWLIB_H__ */
+

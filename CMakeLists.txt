@@ -1,40 +1,39 @@
-cmake_minimum_required(VERSION 3.6.0)
-project(newlib VERSION 3.0.0 LANGUAGES C)
-
 #
-# Module includes
+# Copyright (C) 2019 Assured Information Security
 #
-include(CMakePackageConfigHelpers)
-
+# Permission to use, copy, modify, and distribute this software
+# is freely granted, provided that this notice is preserved.
 #
-# EXPORT_DIR
-#
-# Path to install target exports and cmake config files.
-# This must be relative to the install prefix. Note that it
-# must always be set to a directory searched for by find_package.
-#
-set(EXPORT_DIR lib/cmake)
 
-configure_package_config_file(
-    newlib-config.cmake.in
-    newlib-config.cmake
-    INSTALL_DESTINATION "${EXPORT_DIR}/newlib"
-    PATH_VARS EXPORT_DIR
-    NO_SET_AND_CHECK_MACRO
-    NO_CHECK_REQUIRED_COMPONENTS_MACRO
-)
+cmake_minimum_required(VERSION 3.13)
+project(newlib VERSION 3.0.0)
 
-install(
-    FILES ${CMAKE_CURRENT_BINARY_DIR}/newlib-config.cmake
-    DESTINATION "${EXPORT_DIR}/newlib"
-)
+set(BUILD_SHARED_LIBS OFF)
 
-install(
-    EXPORT newlib::lib
-    DESTINATION "${EXPORT_DIR}/newlib"
-    NAMESPACE newlib::lib
-    FILE newlib-targets.cmake
-)
+# Bareflank-specific defines. These are referenced by the configure_file
+# commands below, so they have to be set before those commands.
 
-add_subdirectory(newlib/libc)
-add_subdirectory(newlib/libm)
+set(_MB_LEN_MAX 1)
+set(_ICONV_ENABLED 1)
+set(HAVE_INITFINI_ARRAY 1)
+set(_ATEXIT_DYNAMIC_ALLOC 1)
+set(_HAVE_LONG_DOUBLE 1)
+set(_FVWRITE_IN_STREAMIO 1)
+set(_FSEEK_OPTIMIZATION 1)
+set(_WIDE_ORIENT 1)
+set(_UNBUF_STREAM_OPT 1)
+
+set(SRC ${CMAKE_CURRENT_LIST_DIR})
+set(TARG_INC ${PROJECT_BINARY_DIR}/targ-include)
+
+execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${TARG_INC}/sys)
+execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${TARG_INC}/bits)
+execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${TARG_INC}/machine)
+
+configure_file(${SRC}/cmake/_newlib_version.h.in ${TARG_INC}/_newlib_version.h)
+configure_file(${SRC}/cmake/newlib.h.in ${TARG_INC}/newlib.h @ONLY UNIX)
+
+install(FILES ${TARG_INC}/_newlib_version.h DESTINATION include)
+install(FILES ${TARG_INC}/newlib.h DESTINATION include)
+
+#add_subdirectory(newlib/libc)
